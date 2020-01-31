@@ -34,7 +34,7 @@ be included as well.
 
 ### Get started
 
-Before include of any Boost library make sure to include `ard-boost.h` before Boost. This will setup exception handling and fix some compile problems. Otherwise the usage is the same as usual. Include any supporting library and you are good to go.
+Before include of any Boost library make sure to include `ard-boost.h` before Boost. This will setup exception handling and fix some compile problems. Otherwise the usage is the same as usual. Include any of supported library and you are good to go.
 
 ```cpp
 #include "ard-boost.h"
