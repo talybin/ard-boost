@@ -8,7 +8,7 @@ So far it includes only libraries I was able to compile for Arduino. My intentio
 
 ### Currently supporting
 
-The following is a list of supported libraries. Because many of these has dependencies to other parts of Boost library, all dependencies was included too. It includes libraries that may not listed here but be present as well.
+The following is a list of supported libraries with all their dependencies:
 
 * [any](https://www.boost.org/doc/libs/1_72_0/libs/any/)
 * [concept check](https://www.boost.org/doc/libs/1_72_0/libs/concept_check/)
