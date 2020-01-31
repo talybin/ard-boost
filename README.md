@@ -69,3 +69,5 @@ void boost::throw_exception(const std::exception& ex) {
 void setup { }
 void loop() { }
 ```
+
+**Note!** The exception handler must not return (protected by *noreturn* attribute).
