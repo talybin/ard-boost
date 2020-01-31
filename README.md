@@ -2,15 +2,13 @@
 
 This is a mini port of [Boost](https://www.boost.org) library, version 1.72.0 (latest on time of writing). Boost is a set of C++ libraries that provide support for tasks and structures such as linear algebra, pseudorandom number generation, multithreading, image processing, regular expressions, unit testing and many more. It contains 160 individual libraries.
 
-Not all libraries are included in this port. Some libraries, such as threading and filesystem, makes no sence on Arduino hardware. Others are already in the standard, like chrono and array, and can be included in Arduino application. But there are many libraries that are not yet in standard or require C++17 or just great parts of Boost. These ported here in this library.
+Not all libraries are included in this port. Some libraries, such as threading and filesystem, makes no sence on Arduino hardware. Others are already in the standard, like chrono and array, and can be used from standard namespace. But there are many libraries that are not yet in standard or require C++17 or just great parts of Boost. These parts ported to this library.
 
 So far it includes only libraries I was able to compile for Arduino. My intention is to add more libraries as needed. Requests are welcome.
 
 ### Currently supporting
 
-The following is a list of libraries that included intentionally. Because many of these has dependencies to other parts of
-Boost library, all dependencies was included too. It includes libraries not listed here but may, very well,
-be included as well.
+The following is a list of supported libraries. Because many of these has dependencies to other parts of Boost library, all dependencies was included too. It includes libraries that may not listed here but be present as well.
 
 * [any](https://www.boost.org/doc/libs/1_72_0/libs/any/)
 * [concept check](https://www.boost.org/doc/libs/1_72_0/libs/concept_check/)
