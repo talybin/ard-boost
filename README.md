@@ -34,11 +34,11 @@ be included as well.
 
 ### Get started
 
-The usage is the same as usual. Include any supporting library and you are good to go. The only thing to have in mind is that some libraries require `ard-boost.h` to be included before in order to compile the code. This is due to collision between some Spark macros and template type names in Boost.
+Before include of any Boost library make sure to include `ard-boost.h` before Boost. This will setup exception handling and fix some compile problems. Otherwise the usage is the same as usual. Include any supporting library and you are good to go.
 
 ```cpp
-#include <ard-boost.h>
-#include <boost/range.hpp>
+#include "ard-boost.h"
+#include "boost/range.hpp"
 
 void setup()
 {
@@ -47,11 +47,25 @@ void setup()
         sum += i;
 }
 
-void loop()
-{
-}
+void loop() { }
 ```
 
 ### Exception handling
 
-As you may know, exceptions are disabled on Arduino. To catch exceptions from Boost override `boost::throw_exception`. By default, in case of an exception, device will be rebooted.
+As you may know, exceptions are disabled on Arduino. Instead of throwing exception, Boost will call special handler function with exception as argument. It is defined in `ard-boost.h` and by default, in case of an exception, will reboot the device.
+
+To provide your own exception handler, make sure to define `CUSTOM_EXCEPTION_HANDLER` **before** include of `ard-boost.h` and override exception function. For example:
+
+```cpp
+#define CUSTOM_EXCEPTION_HANDLER
+#include "ard-boost.h"
+
+void boost::throw_exception(const std::exception& ex) {
+    // Log exception and reboot
+    Particle.publish("Error", ex.what(), PRIVATE);
+    System.reset();
+}
+
+void setup { }
+void loop() { }
+```
