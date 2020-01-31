@@ -66,7 +66,7 @@ void boost::throw_exception(const std::exception& ex) {
     System.reset();
 }
 
-void setup { }
+void setup() { }
 void loop() { }
 ```
 
