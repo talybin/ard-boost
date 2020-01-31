@@ -34,6 +34,24 @@ be included as well.
 
 ### Get started
 
+The usage is the same as usual. Include any supporting library and you are good to go. The only thing to have in mind is that some libraries require `ard-boost.h` to be included before in order to compile the code. This is due to collision between some Spark macros and template type names in Boost.
+
+```cpp
+#include <ard-boost.h>
+#include <boost/range.hpp>
+
+void setup()
+{
+    int sum = 0;
+    for (int i : boost::irange(5, 10))
+        sum += i;
+}
+
+void loop()
+{
+}
+```
+
 ### Exception handling
 
 As you may know, exceptions are disabled on Arduino. To catch exceptions from Boost override `boost::throw_exception`. By default, in case of an exception, device will be rebooted.
