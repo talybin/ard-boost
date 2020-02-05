@@ -2,9 +2,21 @@
 // This will setup exception handling and fix some compile problems.
 #pragma once
 
-// Exceptions are disabled on Particle by default,
-// but can be re-enabled (experimental) with
-// #pragma GCC optimize "exceptions"
+// Exceptions are disabled on Particle by default, but can be
+// re-enabled (experimental) with ENABLE_EXCEPTIONS define
+// before including this file.
+// NOTE! However this crashes GCC 5.3.1 (current version). Don't
+// use it until later versions of GCC.
+#ifdef ENABLE_EXCEPTIONS
+
+#pragma GCC optimize "exceptions"
+#define __cpp_exceptions    199711
+#define __EXCEPTIONS        1
+
+#endif
+
+// If exceptions are not available or there is a custom exception
+// handler...
 #if defined(CUSTOM_EXCEPTION_HANDLER) || !defined(__cpp_exceptions)
 
 #define BOOST_NO_EXCEPTIONS
