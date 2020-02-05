@@ -1,6 +1,12 @@
+// This file must be included before include of any Boost library.
+// This will setup exception handling and fix some compile problems.
 #pragma once
 
-// Exceptions are disabled on Particle
+// Exceptions are disabled on Particle by default,
+// but can be re-enabled (experimental) with
+// #pragma GCC optimize "exceptions"
+#if defined(CUSTOM_EXCEPTION_HANDLER) || !defined(__cpp_exceptions)
+
 #define BOOST_NO_EXCEPTIONS
 #define BOOST_EXCEPTION_DISABLE
 
@@ -17,10 +23,12 @@
 //      System.reset();
 //  }
 //
-#ifndef CUSTOM_EXCEPTION_HANDLER
+#if !defined(CUSTOM_EXCEPTION_HANDLER)
 inline void boost::throw_exception(const std::exception&) {
     System.reset();
 }
+#endif
+
 #endif
 
 // There are collisions between SPARK macros for pins
